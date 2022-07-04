@@ -6,11 +6,13 @@ import AppRouter from "./Router";
 function App() {
   const [loading, setLoading] = useState<boolean>(false);
   const [isLoggedIn, setIsLoggedIn] = useState<User | boolean>(false);
+  const [userObject, setUserObject] = useState<User | null>(null);
 
   useEffect(() => {
     authService.onAuthStateChanged((user) => {
       if (user) {
         setIsLoggedIn(user);
+        setUserObject(user);
       } else {
         setIsLoggedIn(false);
       }
@@ -21,8 +23,11 @@ function App() {
 
   return (
     <>
-      {loading ? <AppRouter isLoggedIn={isLoggedIn} /> : "로딩중..."}
-      <footer>&copy; {new Date().getFullYear()} Self-Project</footer>
+      {loading ? (
+        <AppRouter isLoggedIn={isLoggedIn} userObject={userObject} />
+      ) : (
+        "로딩중..."
+      )}
     </>
   );
 }

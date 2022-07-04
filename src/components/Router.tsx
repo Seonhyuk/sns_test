@@ -12,16 +12,17 @@ import Navigation from "./Navigation";
 
 interface IsLoggedIn {
   isLoggedIn: User | boolean;
+  userObject: User | null;
 }
 
-const AppRouter = ({ isLoggedIn }: IsLoggedIn): JSX.Element => {
+const AppRouter = ({ isLoggedIn, userObject }: IsLoggedIn): JSX.Element => {
   return (
     <Router>
       {isLoggedIn && <Navigation />}
       <Routes>
         {isLoggedIn ? (
           <>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home userObject={userObject} />} />
             <Route path="/profile" element={<Profile />} />
           </>
         ) : (

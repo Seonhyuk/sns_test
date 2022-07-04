@@ -31,7 +31,7 @@ const Auth = (): JSX.Element => {
       social = new firebaseInstance.GithubAuthProvider();
     }
 
-    const user = await signInWithPopup(authService, social);
+    await signInWithPopup(authService, social);
   };
 
   const onChange = (e: any) => {
@@ -46,17 +46,16 @@ const Auth = (): JSX.Element => {
     e.preventDefault();
 
     try {
-      let user;
       if (newSignUp) {
         // 회원가입 부분
-        user = await createUserWithEmailAndPassword(
+        await createUserWithEmailAndPassword(
           authService,
           loginForm.email,
           loginForm.password
         );
       } else {
         // 로그인 부분
-        user = await signInWithEmailAndPassword(
+        await signInWithEmailAndPassword(
           authService,
           loginForm.email,
           loginForm.password
