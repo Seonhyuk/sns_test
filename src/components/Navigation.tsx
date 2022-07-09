@@ -1,7 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { User } from "firebase/auth";
 
-const Navigation = (): JSX.Element => {
+interface propsData {
+  userObject: User;
+}
+
+const Navigation = ({ userObject }: propsData): JSX.Element => {
   return (
     <nav>
       <ul>
@@ -9,7 +14,7 @@ const Navigation = (): JSX.Element => {
           <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="/profile">My Profile</Link>
+          <Link to="/profile">{userObject.displayName}의 Profile</Link>
         </li>
       </ul>
     </nav>

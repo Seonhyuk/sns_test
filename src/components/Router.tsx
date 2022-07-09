@@ -11,19 +11,29 @@ import Profile from "../pages/Profile";
 import Navigation from "./Navigation";
 
 interface IsLoggedIn {
-  isLoggedIn: User | boolean;
+  isLoggedIn: boolean;
   userObject: User | null;
+  updateUser: Function;
 }
 
-const AppRouter = ({ isLoggedIn, userObject }: IsLoggedIn): JSX.Element => {
+const AppRouter = ({
+  isLoggedIn,
+  userObject,
+  updateUser,
+}: IsLoggedIn): JSX.Element => {
   return (
     <Router>
-      {isLoggedIn && <Navigation />}
+      {isLoggedIn && userObject && <Navigation userObject={userObject} />}
       <Routes>
-        {isLoggedIn ? (
+        {isLoggedIn && userObject ? (
           <>
             <Route path="/" element={<Home userObject={userObject} />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route
+              path="/profile"
+              element={
+                <Profile userObject={userObject} updateUser={updateUser} />
+              }
+            />
           </>
         ) : (
           <Route path="/" element={<Auth />} />
