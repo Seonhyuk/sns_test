@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.js": "/sns-project/static/js/main.7166a3b5.js",
-    "index.html": "/sns-project/index.html",
-    "main.7166a3b5.js.map": "/sns-project/static/js/main.7166a3b5.js.map"
+    "main.js": "/sns_test/static/js/main.7166a3b5.js",
+    "index.html": "/sns_test/index.html",
+    "main.7166a3b5.js.map": "/sns_test/static/js/main.7166a3b5.js.map"
   },
   "entrypoints": [
     "static/js/main.7166a3b5.js"
